@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess The Capital</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Protest+Guerrilla&display=swap" rel="stylesheet">
+  <link rel = "icon" href="favicon.png" type="icon">
+</head>
+
+<body id="app">
+  <form class="container" action="/submit" method="post">
+    <h2 istyle="align-self: center" id="main-title">Guess The Capital</h2>
+    <div class="horizontal-container">
+      <h3>
+        Score:
+        <span id="score">
+          <%= locals.totalScore ? totalScore : "0" %>
+        </span>
+      </h3>
+      <h3>
+        High Score:
+        <span id="highScore"><%= locals.highScore ? highScore : "0" %></span>
+      </h3>
+    </div>
+
+    <h1 id="countryName">
+      <%=question.country %>
+    </h1>
+    <div class="answer-container">
+      <input type="text" name="answer" id="userInput" placeholder="Enter the capital" autofocus autocomplete="off">
+
+    </div>
+    <button type="submit">SUBMIT<% if(locals.wasCorrect){ %>
+      <span class="checkmark">✔</span>
+      <% } else if (locals.wasCorrect===false) { %>
+        <span class="cross" id="error">✖</span>
+        <% } %>
+    </button>
+
+  </form>
+
+  <script>
+    var wasCorrect = "<%= locals.wasCorrect %>";
+    var totalScore = "<%= locals.totalScore %>";
+    var highScore = "<%= locals.highScore %>";
+    console.log(wasCorrect)
+
+    if (wasCorrect === "false") {
+      var containerDiv = document.createElement("div");
+      containerDiv.className = "game-over-container";
+
+      var gameOverMessage = document.createElement("h2");
+      gameOverMessage.innerHTML = "Game Over. Your Score: " + totalScore;
+
+      var restartButton = document.createElement("a");
+      restartButton.href = "/";
+      restartButton.className = "restart-button";
+      restartButton.innerHTML = "RESTART";
+
+      containerDiv.appendChild(gameOverMessage);
+      containerDiv.appendChild(restartButton);
+
+      var appElement = document.getElementById("app");
+      appElement.innerHTML = "";
+      appElement.appendChild(containerDiv);
+    }
+    if (wasCorrect === "true") {
+      document.getElementById("score").innerText = totalScore;
+      document.getElementById("highScore").innerText = highScore;
+    }
+
+  </script>
+</body>
+
+</html>
