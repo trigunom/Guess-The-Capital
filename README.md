@@ -26,10 +26,9 @@ Welcome to **Guess The Capital**, a simple and interactive web application that 
 
 1. Ensure you have [Node.js](https://nodejs.org/) and [PostgreSQL](https://www.postgresql.org/) installed on your machine.
 2. Clone the repository:
-
-   ```bash
-   git clone https://github.com/trigunom/Guess-The-Capital.git
-    ```
+ ```bash
+ git clone https://github.com/trigunom/Guess-The-Capital.git
+ ```
 3. Navigate to the project directory:
 
 ```bash
@@ -78,3 +77,4 @@ npm index.js
 
 ## UI
 
+![WenPage] (public/images/screenshot.png)
