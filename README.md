@@ -77,4 +77,4 @@ npm index.js
 
 ## UI
 
-![WenPage] (public/images/screenshot.png)
+![WebPage](public/images/screenshot.png)
